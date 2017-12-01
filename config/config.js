@@ -6,5 +6,5 @@ const dbname = 'dbname';
 
 /* Export API keys here */
 module.exports = {
-  mongoURI: `mongodb://localhost/${dbname}`
+  mongoURI: `mongodb://admin:bloggy@ds123946.mlab.com:23946/bloggy`
 };
