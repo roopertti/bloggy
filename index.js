@@ -2,33 +2,41 @@ import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
 import bodyParser from 'body-parser';
-import hbs from 'express-handlebars';
-
-const app = express();
-app.use(express.static(path.join(__dirname, 'public')));
+import cookieSession from 'cookie-session';
+import passport from 'passport';
+require('./models/User');
+require('./services/passport');
 
 // CONFIG
 import config from './config/config';
 
-// ROUTERS
-import apiRouter from './routers/api';
+const app = express();
 
-// MONGODB SETUP
-mongoose.connect(config.mongoURI);
-mongoose.Promise = global.Promise;
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [config.cookieKey]
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // BODYPARSER MIDDLEWARE
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-// VIEW ENGINE SETUP
-app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts'}));
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+// MONGODB SETUP
+mongoose.connect(config.mongoURI);
+mongoose.Promise = global.Promise;
 
 // ROUTES
-app.get('/', (req, res) => { res.render('index'); });
-app.use('/api', apiRouter);
+require('./routes/auth')(app);
+require('./routes/api')(app);
+app.get('*', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+})
 
 const port = process.env.PORT || 3000;
 

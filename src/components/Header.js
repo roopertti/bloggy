@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Header = (props) => {
-  return (
-    <div className="text-center">
-      <h1>{props.title}</h1>
-    </div>
-  );
+class Header extends Component {
+  render() {
+    return (
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a className="navbar-brand" href="#">Navbar</a>
+      </nav>
+    )
+  }
 }
 
 export default Header;

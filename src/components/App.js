@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from './Header';
-import AjaxExample from './AjaxExample';
 
-class App extends Component {
+const Feed = () => <Header />;
+const Profile = () => <h2>Profile</h2>;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      pageHeader: "Otsikko"
-    };
-  }
-
-  render() {
-    return (
-      <div className="container-fluid">
-        <Header title={this.state.pageHeader} />
-        <AjaxExample />
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <div>
+      <BrowserRouter>
+        <div>
+          <Route exact path="/" component={Feed}></Route>
+          <Route path="/profile" component={Profile}></Route>
+        </div>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;

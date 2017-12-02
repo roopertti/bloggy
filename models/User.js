@@ -1,18 +1,20 @@
 import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const UserSchema = new Schema({
-  name: {
+  googleID: {
     type: String,
     unique: true,
     required: true
   },
-  pass: {
+  givenName: {
+    type: String,
+    required: true
+  },
+  familyName: {
     type: String,
     required: true
   }
 });
 
-const User = mongoose.model('User', UserSchema, 'users');
-
-module.exports = User;
+const User = mongoose.model('users', UserSchema);
