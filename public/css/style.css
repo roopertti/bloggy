@@ -1,0 +1,70 @@
+.navbar {
+  margin-bottom: 20px;
+}
+
+.post-container {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  float: left;
+}
+
+.post-section-big {
+  width: 80%;
+  float: left;
+}
+
+.post-section-small {
+  width: 20%;
+  float: left;
+  padding: 20px 0 0 20px;
+}
+
+.post-header {
+  padding: 10px 0;
+  border-radius: 10px;
+  width: 100%;
+  float: left;
+}
+
+.post-profile-picture-container {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  float: left;
+}
+
+.post-profile-picture {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+}
+
+.post-title {
+  font-weight: 700;
+  font-size: 20px;
+  display: inline-block;
+  float: left;
+}
+
+.post-body {
+  width: 100%;
+  float: left;
+}
+
+.post-content {
+  border-left: 5px solid #66b7db;
+  padding-left: 10px;
+}
+
+.post-date {
+  color: #c9c9c9;
+}
+
+.post-footer {
+  padding-bottom: 20px;;
+}

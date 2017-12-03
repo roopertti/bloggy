@@ -6,8 +6,7 @@ import * as actions from '../actions';
 import Header from './Header';
 import Profile from './Profile';
 import Landing from './Landing';
-
-const Feed = () => <h2>Feed</h2>;
+import Feed from './Feed';
 
 class App extends Component {
 
@@ -21,7 +20,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <Route exact path="/" component={Landing}></Route>
+            <Route exact path="/" component={Feed}></Route>
             <Route path="/profile" component={Profile}></Route>
           </div>
         </BrowserRouter>
